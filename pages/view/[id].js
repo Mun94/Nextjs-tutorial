@@ -2,7 +2,7 @@ import axios from "axios";
 import Item from "../../src/component/Itme";
 import Head from "next/head";
 
-const Post = ({ item }) => {
+const Post = ({ item, name }) => {
   return (
     <>
       {item && (
@@ -25,6 +25,8 @@ export async function getServerSideProps(context) {
   const apiUrl = `http://makeup-api.herokuapp.com/api/v1/products/${id}.json`;
   const res = await axios.get(apiUrl);
   const data = res.data;
+
+  console.log(process.env.name);
 
   return {
     props: {
